@@ -8,7 +8,11 @@ Vue.config.debug = true;
 Vue.use(require('vue-resource'));
 
 //Vue instance, we bind the instance to the element with the id of container
-//The we initialize our instance with some data
+//The we initialize our instance with some data, best if its the data you want to use
+// this insures that the Vue binds all the data we want it to
+// in the instance we define the methods, the changeRepo method sipmly splits the
+// vaule of the fullRepoName piece of data and assigns the first part to the username
+// and the second part to the repo.
 new Vue({
     el: '#container',
     data: {
@@ -29,6 +33,9 @@ new Vue({
             console.groupEnd("Vue Data");
         }
     },
+    // telling the vue instance about our new components
+    // this brings in the component from the given file
+    // since no specific file is provided the default used is index.js
     components: {
         githubFileExplorer: require('./components/github-file-explorer')
     }

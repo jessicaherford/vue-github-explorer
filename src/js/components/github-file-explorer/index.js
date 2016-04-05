@@ -1,4 +1,8 @@
+// object being exported has all of the configurations for our component
+
 module.exports = {
+  //defining a template and bringing in the code form template.html
+  // We are allowed to do this using browserify/partialify
     template: require('./template.html'),
     data: function() {
         return {
@@ -6,7 +10,10 @@ module.exports = {
             files: []
         };
     },
+    //defining the properties this component will accept from its parent
     props: {
+      //username and repo are objects defined within the props
+      // allows for validations in order for the data in the Vue instance to be updated
         username: {
             type: String,
             required: true
