@@ -30,16 +30,25 @@ module.exports = {
         fullRepoUrl: function() {
             return this.username + '/' + this.repo;
         },
+        //function that is called from template.html
         sortedFiles: function() {
           //sorts the files alphabetically
+          // slice creates a copy of the array
             return this.files.slice(0).sort(function(a, b) {
+              //gets passed a pair of files to compare
+              //checks if they are the same type
                 if (a.type !== b.type) {
                     if (a.type === 'dir') {
+                      //checks if the type of the first one is a directory
+                      // it returns it before the other one in the array
                         return -1;
                     } else {
+                      // returns it after the other one in the array
                         return 1;
                     }
                 } else {
+                  // if they are the same type, checking to see if the name of the first
+                  // one is less the the name of the second one
                     if (a.name < b.name) {
                         return -1;
                     } else {
@@ -74,6 +83,7 @@ module.exports = {
             this.getFiles();
         }
     },
+    // watch object wathces for changes in the repo object in index.html
     watch: {
         repo: function(newVal, oldVal) {
             this.path = '/';
